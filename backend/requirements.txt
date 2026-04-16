@@ -1,0 +1,29 @@
+# Core framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-dotenv==1.0.1
+pydantic==2.10.3
+
+# Document parsing
+pdfplumber==0.11.4
+python-frontmatter==1.1.0
+
+# Chunking
+tiktoken==0.8.0
+
+# Embeddings
+sentence-transformers==3.3.1
+
+# Vector database (faiss-cpu has pre-built Windows wheels, no C++ compiler needed)
+faiss-cpu==1.9.0
+
+# LLM providers (install at least one)
+anthropic==0.40.0
+openai==1.58.1
+
+# GPT-2 sandbox
+transformers==4.47.1
+torch==2.5.1
+
+# Evaluation
+numpy==2.2.0

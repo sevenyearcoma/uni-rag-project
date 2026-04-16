@@ -1,0 +1,183 @@
+[
+  {
+    "id": "q001",
+    "question": "What is Retrieval-Augmented Generation (RAG)?",
+    "answer": "RAG is a technique that combines retrieval of relevant documents with language model generation to produce grounded, cited answers.",
+    "relevant_docs": ["rag_overview.pdf", "rag_overview.md"]
+  },
+  {
+    "id": "q002",
+    "question": "How does a vector database store embeddings?",
+    "answer": "A vector database stores dense numerical vectors (embeddings) along with associated metadata, enabling fast approximate nearest-neighbour search.",
+    "relevant_docs": ["vector_databases.pdf", "vector_databases.md"]
+  },
+  {
+    "id": "q003",
+    "question": "What is the difference between GPT-2 and BERT architectures?",
+    "answer": "GPT-2 is a decoder-only model using causal (left-to-right) self-attention, making it suitable for text generation. BERT is an encoder-only model using bidirectional self-attention, making it ideal for creating rich contextual embeddings used in retrieval.",
+    "relevant_docs": ["architecture_study.pdf", "architecture_study.md"]
+  },
+  {
+    "id": "q004",
+    "question": "Why is sentence-transformers used for embeddings rather than GPT-2?",
+    "answer": "Sentence-transformers are fine-tuned BERT derivatives that produce semantically rich, fixed-size sentence embeddings optimised for cosine similarity — crucial for retrieval. GPT-2 is a generative model not designed for embedding similarity.",
+    "relevant_docs": ["architecture_study.pdf"]
+  },
+  {
+    "id": "q005",
+    "question": "What is chunking and why is it necessary in RAG?",
+    "answer": "Chunking splits documents into smaller, manageable text segments that fit within the context window of an LLM and can be individually embedded and retrieved.",
+    "relevant_docs": ["rag_overview.pdf", "chunking_strategies.md"]
+  },
+  {
+    "id": "q006",
+    "question": "What is the fixed-size overlap chunking strategy?",
+    "answer": "Fixed-size overlap chunking splits text into token windows of a fixed size (e.g., 256 tokens) with a configurable overlap (e.g., 15%) between consecutive windows to preserve context continuity.",
+    "relevant_docs": ["chunking_strategies.md"]
+  },
+  {
+    "id": "q007",
+    "question": "What is the recursive sentence-aware chunking strategy?",
+    "answer": "Recursive chunking first splits text on paragraph and sentence boundaries, then merges or further splits segments to meet token-size constraints, producing more semantically coherent chunks than fixed-size splitting.",
+    "relevant_docs": ["chunking_strategies.md"]
+  },
+  {
+    "id": "q008",
+    "question": "What metadata is attached to each chunk in the pipeline?",
+    "answer": "Each chunk carries: filename, source URL, title, date, chunk_index, chunking strategy name, and token count.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q009",
+    "question": "How does cosine similarity work for retrieval?",
+    "answer": "Cosine similarity measures the angle between two embedding vectors; vectors pointing in the same direction (score close to 1.0) indicate semantic similarity, regardless of vector magnitude.",
+    "relevant_docs": ["vector_databases.pdf"]
+  },
+  {
+    "id": "q010",
+    "question": "What is precision@5 in information retrieval?",
+    "answer": "Precision@5 is the fraction of the top-5 retrieved documents that are truly relevant to the query. A score of 1.0 means all 5 retrieved results were relevant.",
+    "relevant_docs": ["evaluation_methods.pdf"]
+  },
+  {
+    "id": "q011",
+    "question": "What is RAGAS faithfulness?",
+    "answer": "RAGAS faithfulness measures whether each claim in the generated answer can be attributed to and is supported by the retrieved context passages.",
+    "relevant_docs": ["evaluation_methods.pdf"]
+  },
+  {
+    "id": "q012",
+    "question": "What is RAGAS answer relevance?",
+    "answer": "RAGAS answer relevance measures how well the generated answer addresses the original question, penalising redundant or incomplete responses.",
+    "relevant_docs": ["evaluation_methods.pdf"]
+  },
+  {
+    "id": "q013",
+    "question": "What is ChromaDB and why was it chosen?",
+    "answer": "ChromaDB is an open-source, persistent vector database with zero-configuration setup, native cosine similarity support, and rich metadata filtering — making it ideal for local RAG development.",
+    "relevant_docs": ["vector_databases.pdf"]
+  },
+  {
+    "id": "q014",
+    "question": "What is the role of the system prompt in grounded generation?",
+    "answer": "The system prompt instructs the LLM to answer only from provided context, cite sources by filename, and respond with 'I cannot find this in the provided documents' when the answer is not in context.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q015",
+    "question": "What is autoregressive language modelling?",
+    "answer": "Autoregressive language modelling predicts each token in a sequence conditioned on all previous tokens, which is the pre-training objective of GPT-2.",
+    "relevant_docs": ["architecture_study.pdf"]
+  },
+  {
+    "id": "q016",
+    "question": "What is masked language modelling (MLM) used in BERT?",
+    "answer": "MLM randomly masks tokens in the input and trains BERT to predict them using surrounding context, enabling the model to develop bidirectional contextual representations.",
+    "relevant_docs": ["architecture_study.pdf"]
+  },
+  {
+    "id": "q017",
+    "question": "What does the /ingest API endpoint do?",
+    "answer": "The /ingest endpoint loads PDF and Markdown files from a directory, chunks them using the specified strategy, embeds the chunks, and stores them in the vector database.",
+    "relevant_docs": ["api_reference.md"]
+  },
+  {
+    "id": "q018",
+    "question": "What does the /query API endpoint return?",
+    "answer": "The /query endpoint returns the LLM-generated answer, the list of source filenames cited, the top-k retrieved chunks, and the provider/model used.",
+    "relevant_docs": ["api_reference.md"]
+  },
+  {
+    "id": "q019",
+    "question": "How does cross-document retrieval work?",
+    "answer": "Cross-document retrieval works because all chunks from all ingested documents share the same vector space; a query is embedded and the top-k most similar chunks are returned regardless of which document they came from.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q020",
+    "question": "What is the token overlap percentage constraint?",
+    "answer": "The pipeline enforces a 10% to 25% overlap between consecutive chunks to preserve context continuity while avoiding excessive duplication.",
+    "relevant_docs": ["chunking_strategies.md"]
+  },
+  {
+    "id": "q021",
+    "question": "What file types does the ingestion pipeline support?",
+    "answer": "The ingestion pipeline supports PDF (.pdf) and Markdown (.md, .markdown) files.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q022",
+    "question": "What is FAISS and how does it compare to ChromaDB?",
+    "answer": "FAISS (Facebook AI Similarity Search) is a highly optimised library for large-scale ANN search in memory; ChromaDB provides persistence, metadata filtering, and a higher-level API, making it more suitable for document-level RAG with moderate scale.",
+    "relevant_docs": ["vector_databases.pdf"]
+  },
+  {
+    "id": "q023",
+    "question": "What is the all-MiniLM-L6-v2 model?",
+    "answer": "all-MiniLM-L6-v2 is a sentence-transformer model producing 384-dimensional sentence embeddings. It is fast, compact, and produces high-quality embeddings for semantic similarity tasks.",
+    "relevant_docs": ["architecture_study.pdf"]
+  },
+  {
+    "id": "q024",
+    "question": "What is Next-Sentence Prediction (NSP) in BERT?",
+    "answer": "NSP is a pre-training task where BERT is trained to predict whether one sentence naturally follows another, helping the model learn inter-sentence coherence.",
+    "relevant_docs": ["architecture_study.pdf"]
+  },
+  {
+    "id": "q025",
+    "question": "What is the experiment log used for?",
+    "answer": "The experiment log (experiment_log.csv) tracks component changes, before/after parameter values, and before/after metric values to document how pipeline modifications affect performance.",
+    "relevant_docs": ["evaluation_methods.pdf"]
+  },
+  {
+    "id": "q026",
+    "question": "What is the chunk size constraint in this pipeline?",
+    "answer": "Chunks must be between 100 and 512 tokens in size.",
+    "relevant_docs": ["chunking_strategies.md"]
+  },
+  {
+    "id": "q027",
+    "question": "How does the refusal mechanism work?",
+    "answer": "If the LLM cannot find the answer in the provided context chunks, it is instructed by the system prompt to respond with exactly: 'I cannot find this in the provided documents'.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q028",
+    "question": "What is temperature in LLM inference?",
+    "answer": "Temperature controls the randomness of the LLM's output; a temperature of 0.0 produces deterministic, factual responses — ideal for grounded RAG generation.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q029",
+    "question": "What is the role of the citation in RAG answers?",
+    "answer": "Citations link each factual claim in the generated answer back to the source document (by filename), enabling users to verify the information and assess trustworthiness.",
+    "relevant_docs": ["rag_overview.pdf"]
+  },
+  {
+    "id": "q030",
+    "question": "What is the weather like on Mars?",
+    "answer": "I cannot find this in the provided documents",
+    "relevant_docs": [],
+    "note": "Out-of-context question — expected refusal"
+  }
+]

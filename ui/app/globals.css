@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --border: #2a2d3e;
+  --text: #e2e8f0;
+  --text-muted: #8892a4;
+  --accent: #3b6ef8;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Markdown rendering inside answers */
+.prose-answer p   { margin-bottom: 0.75rem; }
+.prose-answer ul  { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.prose-answer ol  { list-style: decimal; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.prose-answer li  { margin-bottom: 0.25rem; }
+.prose-answer strong { font-weight: 600; }
+.prose-answer em  { font-style: italic; }
+.prose-answer code {
+  background: rgba(255,255,255,0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+}

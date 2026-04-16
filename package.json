@@ -1,0 +1,15 @@
+{
+  "name": "uni-rag-project",
+  "version": "1.0.0",
+  "description": "A production-ready Retrieval-Augmented Generation (RAG) pipeline built from scratch. The system ingests documents, chunks them with two strategies, embeds them into a FAISS vector store, retrieves top-5 contexts, and generates strictly grounded, cited answers via an LLM API.",
+  "main": "generate_report.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "docx": "^9.6.1"
+  }
+}
